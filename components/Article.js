@@ -101,8 +101,57 @@ const data = [
     {three separate paragraph elements}
 
     <span class="expandButton">+</span>
-  </div>
+  </div> */
+  
+  /* creating nodes */
 
+  
+  function articleMaker({ title, date, firstParagraph, secondParagraph, thirdParagraph }) {
+    const article = document.createElement('div');
+    const articleTitle = document.createElement('h2');
+    const articleDate = document.createElement('p');
+    const paragraph1 = document.createElement('p');
+    const paragraph2 = document.createElement('p');
+    const paragraph3 = document.createElement('p');
+    const button = document.createElement('span');
+    
+    
+    articleTitle.textContent = title;
+    articleDate.textContent = date;
+    paragraph1.textContent = firstParagraph;
+    paragraph2.textContent = secondParagraph;
+    paragraph3.textContent = thirdParagraph;
+    button.textContent = '+';
+
+    article.appendChild(articleTitle);
+    article.appendChild(articleDate);
+    article.appendChild(paragraph1);
+    article.appendChild(paragraph2);
+    article.appendChild(paragraph3);
+    article.appendChild(button);
+    
+
+    article.classList.add('article');
+    articleTitle.classList.add('h2');
+    articleDate.classList.add('date');
+    button.classList.add('expandButton');
+
+    button.addEventListener('click', e =>{
+      article.classList.toggle('article-open');
+    })
+
+    return article;
+  }
+  // console.log(articleMaker(data));
+
+// Adding array //
+
+  // data.forEach(articleObj => {
+  //   const newA = articleMaker(articleObj)
+  //   document.querySelector('.articles').append(newA);
+  // });
+
+/*
   Step 2: Still inside `articleMaker`, add an event listener to the span.expandButton.
   This listener should toggle the class 'article-open' on div.article.
 
@@ -114,3 +163,18 @@ const data = [
   Step 5: Try adding new article object to the data array. Make sure it is in the same format as the others.
   Refresh the page to see the new article.
 */
+
+const newArticle = {
+  title: "I'm Finally Understanding Web Developing!",
+  date: "June 2nd, 2021",
+  firstParagraph: "My coding journey has been a very difficult one, mainly because I haven't been giving it my all.",
+  secondParagraph: "Now that I'm flexing Unit 2, I'm filling holes in areas I was struggling with.",
+  thirdParagraph: "If I keep up the pace I'm going in I'll be a web developer in no time!"
+}
+
+data.push(newArticle);
+
+const articles = document.querySelector('div.articles');
+  data.forEach((dataObj) => articles.appendChild(articleMaker(dataObj)));
+
+console.log(data);
