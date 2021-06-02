@@ -28,7 +28,7 @@ function menuMaker(arr){
     const listItem = document.createElement('li');
     listItem.innerText = item;
     list.appendChild(listItem);
-    console.log(listItem);
+    // console.log(listItem);
   });
   
   menu.appendChild(list);
@@ -36,7 +36,7 @@ function menuMaker(arr){
 
   const menuButton = document.querySelector('.menu-button');
   menuButton.addEventListener('click', e => {
-    menu.classList.add('menu--open');
+    menu.classList.toggle('menu--open');
   })
   return menu;
 }
